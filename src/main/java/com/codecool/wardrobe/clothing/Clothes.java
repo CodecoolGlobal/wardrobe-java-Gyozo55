@@ -8,7 +8,10 @@ public class Clothes {
 
     protected ClothesType type;
 
-    public Clothes(String brandName) {
+    public Clothes(String brandName, ClothesType type) {
+        setId();
+        setBrandName(brandName);
+        setType(type);
     }
 
     public UUID getId() {
@@ -21,6 +24,22 @@ public class Clothes {
 
     public ClothesType getType() {
         return this.type;
+    }
+
+    public void setId() {
+        this.id = UUID.randomUUID();
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public void setType(ClothesType type) {
+        for(ClothesType enumType: ClothesType.values())
+            if (enumType == type) {
+                this.type = type;
+                break;
+            }
     }
 
     public enum ClothesType {
