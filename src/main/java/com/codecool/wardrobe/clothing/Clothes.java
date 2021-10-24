@@ -8,9 +8,10 @@ public class Clothes {
 
     protected ClothesType type;
 
-    public Clothes(String brandName) {
+    public Clothes(String brandName, ClothesType type) {
         setId();
         setBrandName(brandName);
+        setType(type);
     }
 
     public void setId() {
@@ -19,6 +20,15 @@ public class Clothes {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    public void setType(ClothesType type) {
+        for(ClothesType ClothesEnum: ClothesType.values()){
+            if (ClothesEnum == type) {
+                this.type = type;
+                break;
+            }
+        }
     }
 
     public UUID getId() {
