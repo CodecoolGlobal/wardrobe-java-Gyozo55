@@ -9,10 +9,15 @@ public class Clothes {
     protected ClothesType type;
 
     public Clothes(String brandName) {
+        setId();
     }
 
     public UUID getId() {
         return id;
+    }
+
+    public void setId() {
+        this.id = UUID.randomUUID();
     }
 
     public String getBrandName() {
