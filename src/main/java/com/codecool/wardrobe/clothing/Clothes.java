@@ -5,7 +5,6 @@ import java.util.UUID;
 public class Clothes {
     private UUID id;
     private String brandName;
-
     protected ClothesType type;
 
     public Clothes(String brandName, ClothesType type) {
@@ -14,17 +13,22 @@ public class Clothes {
         setType(type);
     }
 
+    public Clothes(String brandName) {
+        this.brandName = brandName;
+    }
+
     public void setId() {
         this.id = UUID.randomUUID();
     }
 
-    public void setType(ClothesType type) {
+    public Object setType(ClothesType type) {
         for(ClothesType ClothesEnum: ClothesType.values()){
             if (ClothesEnum == type) {
                 this.type = type;
                 break;
             }
         }
+        return null;
     }
 
     public UUID getId() {
