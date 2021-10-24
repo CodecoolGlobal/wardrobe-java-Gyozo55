@@ -10,14 +10,19 @@ public class Clothes {
 
     public Clothes(String brandName) {
         setId();
-    }
-
-    public UUID getId() {
-        return id;
+        setBrandName(brandName);
     }
 
     public void setId() {
         this.id = UUID.randomUUID();
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getBrandName() {
