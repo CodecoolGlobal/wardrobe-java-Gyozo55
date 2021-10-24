@@ -10,16 +10,12 @@ public class Clothes {
 
     public Clothes(String brandName, ClothesType type) {
         setId();
-        setBrandName(brandName);
+        this.brandName = brandName;
         setType(type);
     }
 
     public void setId() {
         this.id = UUID.randomUUID();
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public void setType(ClothesType type) {
