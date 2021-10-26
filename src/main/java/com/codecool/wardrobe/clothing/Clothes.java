@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Clothes {
     private UUID id;
-    private String brandName;
+    private final String brandName;
     protected ClothesType type;
 
     public Clothes(String brandName, ClothesType type) {
@@ -21,14 +21,13 @@ public class Clothes {
         this.id = UUID.randomUUID();
     }
 
-    public Object setType(ClothesType type) {
+    public void setType(ClothesType type) {
         for(ClothesType ClothesEnum: ClothesType.values()){
             if (ClothesEnum == type) {
                 this.type = type;
                 break;
             }
         }
-        return null;
     }
 
     public UUID getId() {
