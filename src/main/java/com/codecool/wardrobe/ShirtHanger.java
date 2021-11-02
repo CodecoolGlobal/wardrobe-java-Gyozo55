@@ -9,11 +9,20 @@ import java.util.UUID;
 
 public class ShirtHanger implements Hanger<UpperClothes> {
 
-    private final ArrayList<Clothes> upperClothesOnHanger = new ArrayList<>();
+    private final ArrayList<UpperClothes> upperClothesOnHanger = new ArrayList<>();
 
     @Override
     public Optional<UpperClothes> takeOff() {
-        return null;
+        UpperClothes currentUpperCloth;
+
+        if(upperClothesOnHanger.size()>0){
+            currentUpperCloth = upperClothesOnHanger.get(0);
+            upperClothesOnHanger.remove(0);
+            return Optional.ofNullable(currentUpperCloth);
+        }
+        else {
+            return Optional.empty();
+        }
     }
 
     @Override
