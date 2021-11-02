@@ -4,15 +4,26 @@ import com.codecool.wardrobe.clothing.Clothes;
 
 import java.util.UUID;
 
-/**
- * The task of the class is to model a wardrobe.
- */
 public class Wardrobe {
+
+    private int wardrobeHangerLimit;
+
     public Wardrobe(int limit) {
+        setWardrobeHangerLimit(limit);
     }
 
+    public void setWardrobeHangerLimit(int wardrobeHangerLimit) {
+        if(wardrobeHangerLimit<=120){
+            this.wardrobeHangerLimit = wardrobeHangerLimit;
+        }
+        else {
+            throw new IllegalArgumentException("Maximum limit is 120.");
+        }
+    }
+
+
     public int getLimit() {
-        return 0;
+        return wardrobeHangerLimit;
     }
 
     public int count() {
