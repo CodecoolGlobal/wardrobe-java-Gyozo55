@@ -9,13 +9,12 @@ public class LowerClothes extends Clothes {
     }
 
     @Override
-    public Object setType(ClothesType type) {
+    public void setType(ClothesType type) {
         if(type==ClothesType.TROUSERS || type==ClothesType.SKIRT) {
             super.setType(type);
         }
         else {
             throw new IllegalArgumentException("Not supported clothes type.");
         }
-        return null;
     }
 }
