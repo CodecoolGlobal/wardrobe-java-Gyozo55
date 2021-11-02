@@ -2,11 +2,13 @@ package com.codecool.wardrobe;
 
 import com.codecool.wardrobe.clothing.Clothes;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Wardrobe {
 
     private int wardrobeHangerLimit;
+    private final ArrayList<Hanger> hangersInWardrobe = new ArrayList<>();
 
     public Wardrobe(int limit) {
         setWardrobeHangerLimit(limit);
@@ -27,10 +29,16 @@ public class Wardrobe {
     }
 
     public int count() {
-        return 0;
+        return hangersInWardrobe.size();
     }
 
     public void put(Hanger<? extends Clothes> hanger) {
+        if(getLimit()>count()){
+            hangersInWardrobe.add(hanger);
+        }
+        else {
+            throw new IllegalStateException("The wardrobe currently is full.");
+        }
     }
 
     public Hanger<? extends Clothes> getHanger(Clothes.ClothesType clothesType) {
