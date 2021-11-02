@@ -15,12 +15,17 @@ public class PantHanger implements Hanger<Clothes> {
 
     @Override
     public Optional<Clothes> takeOff() {
-
-        if(upperClothesOnHanger.size()>0 && lowerClothesOnHanger.size()==0){
-            return Optional.ofNullable(upperClothesOnHanger.get(0));
+        Clothes currentUpperCloth;
+        Clothes currentLowerCloth;
+        if(upperClothesOnHanger.size()>0){
+            currentUpperCloth = upperClothesOnHanger.get(0);
+            upperClothesOnHanger.remove(0);
+            return Optional.ofNullable(currentUpperCloth);
         }
         else if(lowerClothesOnHanger.size()>0){
-            return Optional.ofNullable(lowerClothesOnHanger.get(0));
+            currentLowerCloth = lowerClothesOnHanger.get(0);
+            lowerClothesOnHanger.remove(0);
+            return Optional.ofNullable(currentLowerCloth);
         }
         else {
             return Optional.empty();
@@ -35,10 +40,20 @@ public class PantHanger implements Hanger<Clothes> {
     @Override
     public void put(Clothes item) {
         if(item.getType() == ClothesType.SHIRT || item.getType() == ClothesType.BLOUSE){
-            upperClothesOnHanger.add(item);
+            if(upperClothesOnHanger.size()==0){
+                upperClothesOnHanger.add(item);
+            }
+            else {
+                throw new IllegalStateException();
+            }
         }
-        else {
-            lowerClothesOnHanger.add(item);
+        else if(item.getType() == ClothesType.SKIRT || item.getType() == ClothesType.TROUSERS){
+            if(lowerClothesOnHanger.size()==0){
+                lowerClothesOnHanger.add(item);
+            }
+            else{
+                throw new IllegalStateException();
+            }
         }
     }
 
