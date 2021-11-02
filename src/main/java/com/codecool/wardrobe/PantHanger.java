@@ -80,6 +80,6 @@ public class PantHanger implements Hanger<Clothes> {
         else if(type == ClothesType.TROUSERS || type == ClothesType.SKIRT){
             return lowerClothesOnHanger.size() <= 0;
         }
-        return true;
+        return false;
     }
 }

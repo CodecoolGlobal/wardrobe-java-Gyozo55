@@ -56,6 +56,9 @@ public class ShirtHanger implements Hanger<UpperClothes> {
 
     @Override
     public boolean hasSlotFor(Clothes.ClothesType type) {
+        if (type == Clothes.ClothesType.SHIRT || type == Clothes.ClothesType.BLOUSE) {
+            return upperClothesOnHanger.size() <= 0;
+        }
         return false;
     }
 }
