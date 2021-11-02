@@ -27,7 +27,16 @@ public class ShirtHanger implements Hanger<UpperClothes> {
 
     @Override
     public Optional<UpperClothes> takeOff(UUID id) {
-        return null;
+        UpperClothes currentUpperCloth;
+
+        if(upperClothesOnHanger.size()>0){
+            if(upperClothesOnHanger.get(0).getId()==id) {
+                currentUpperCloth = upperClothesOnHanger.get(0);
+                upperClothesOnHanger.remove(0);
+                return Optional.ofNullable(currentUpperCloth);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
