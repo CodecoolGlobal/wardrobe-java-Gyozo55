@@ -3,12 +3,13 @@ package com.codecool.wardrobe;
 import com.codecool.wardrobe.clothing.Clothes;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class Wardrobe {
 
     private int wardrobeHangerLimit;
-    private final ArrayList<Hanger> hangersInWardrobe = new ArrayList<>();
+    private final ArrayList<Hanger<? extends Clothes>> hangersInWardrobe = new ArrayList<>();
 
     public Wardrobe(int limit) {
         setWardrobeHangerLimit(limit);
@@ -42,7 +43,12 @@ public class Wardrobe {
     }
 
     public Hanger<? extends Clothes> getHanger(Clothes.ClothesType clothesType) {
-        return null;
+        for(Hanger hanger: hangersInWardrobe){
+            if(hanger.hasSlotFor(clothesType)){
+                return hanger;
+            }
+        }
+        throw new NoSuchElementException("No empty hangers for your clothes");
     }
 
     public Clothes getClothes(UUID clothesId) {
