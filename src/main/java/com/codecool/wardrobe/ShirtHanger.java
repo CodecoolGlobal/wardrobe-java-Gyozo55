@@ -32,7 +32,6 @@ public class ShirtHanger implements Hanger<UpperClothes> {
         if(upperClothesOnHanger.size()>0){
             if(upperClothesOnHanger.get(0).getId()==id) {
                 currentUpperCloth = upperClothesOnHanger.get(0);
-                upperClothesOnHanger.remove(0);
                 return Optional.ofNullable(currentUpperCloth);
             }
         }

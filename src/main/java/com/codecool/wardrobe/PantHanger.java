@@ -38,14 +38,12 @@ public class PantHanger implements Hanger<Clothes> {
         if(upperClothesOnHanger.size()>0){
             if(upperClothesOnHanger.get(0).getId()==id) {
                 currentUpperCloth = upperClothesOnHanger.get(0);
-                upperClothesOnHanger.remove(0);
                 return Optional.ofNullable(currentUpperCloth);
             }
         }
         else if(lowerClothesOnHanger.size()>0){
             if(lowerClothesOnHanger.get(0).getId()==id) {
                 currentLowerCloth = lowerClothesOnHanger.get(0);
-                lowerClothesOnHanger.remove(0);
                 return Optional.ofNullable(currentLowerCloth);
             }
         }
