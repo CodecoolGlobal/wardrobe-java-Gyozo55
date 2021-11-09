@@ -4,6 +4,7 @@ import com.codecool.wardrobe.clothing.Clothes;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 public class Wardrobe {
@@ -52,7 +53,12 @@ public class Wardrobe {
     }
 
     public Clothes getClothes(UUID clothesId) {
-        return null;
+        for (Hanger hanger: hangersInWardrobe){
+            if(hanger.takeOff(clothesId).isPresent()){
+                return (Clothes) hanger.takeOff(clothesId).get();
+            }
+        }
+        throw new NoSuchElementException("Clothes not found.");
     }
 
     // The main method with this declaration is the entry point of Java applications.
